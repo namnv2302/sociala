@@ -1,0 +1,38 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+
+    .left {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        width: var(--sidebar-width);
+        padding-left: 10px;
+
+        .link {
+            display: inline-flex;
+            align-items: center;
+            height: 100%;
+
+            .icon {
+                color: #10d876;
+                margin-right: 8px;
+            }
+
+            .title {
+                font-size: 3.2rem;
+                font-weight: 700;
+                color: var(--theme-color);
+                font-family: 'Fredoka One', cursive;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}

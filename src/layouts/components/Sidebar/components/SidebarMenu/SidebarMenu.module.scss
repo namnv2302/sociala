@@ -1,0 +1,42 @@
+.wrapper {
+    padding: 16px 0 8px;
+    margin-bottom: 8px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    background-color: var(--sidebar-bg);
+    cursor: default;
+
+    .heading {
+        font-size: 1.2rem;
+        color: var(--text-second);
+        padding-left: 25px;
+        margin-bottom: 8px;
+    }
+
+    .item {
+        display: flex;
+        align-items: center;
+        padding: 6px 15px;
+        border-radius: 15px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--hover-overlay);
+        }
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            margin-right: 10px;
+            border-radius: 100%;
+        }
+
+        .title {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+    }
+}

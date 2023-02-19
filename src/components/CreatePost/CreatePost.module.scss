@@ -1,0 +1,128 @@
+.wrapper {
+    padding: 24px 24px 16px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    background-color: var(--white-color);
+    margin-bottom: 20px;
+
+    .header {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 16px;
+        cursor: pointer;
+
+        .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            border-radius: 100%;
+            background-color: var(--bg-nav-icon);
+        }
+
+        .heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-left: 10px;
+            margin-right: 8px;
+        }
+    }
+
+    .body {
+        position: relative;
+        border-radius: 15px;
+
+        .img {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            z-index: 1;
+
+            img {
+                display: block;
+                object-fit: cover;
+                width: 30px;
+                height: 30px;
+                border-radius: 100%;
+            }
+        }
+
+        .input {
+            font-weight: 500;
+            border-radius: 15px;
+            border: 2px solid #f1f1f1;
+            max-height: 150px;
+            min-height: 46px;
+            padding-left: 48px;
+            padding-top: 8px;
+        }
+    }
+
+    .content-img {
+        position: relative;
+        margin-top: 16px;
+
+        .image {
+            position: relative;
+            width: 20%;
+
+            img {
+                display: block;
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .cancel {
+                position: absolute;
+                top: 3px;
+                right: 4px;
+                padding: 2px;
+                color: var(--white-color);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+
+        .item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding-right: 24px;
+            padding-top: 8px;
+            cursor: pointer;
+
+            label {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            &:first-child .icon {
+                color: #e50202;
+            }
+
+            &:nth-child(2) .icon {
+                color: #10d876;
+            }
+
+            &:nth-child(3) .icon {
+                color: #fe9431;
+            }
+
+            .text {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-left: 8px;
+                letter-spacing: 0.4px;
+            }
+        }
+    }
+}

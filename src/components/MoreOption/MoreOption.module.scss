@@ -1,0 +1,33 @@
+.wrapper {
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    cursor: pointer;
+
+    .icon {
+        display: flex;
+        align-items: center;
+        color: #adb5bd;
+        margin-right: 16px;
+    }
+
+    .text {
+        display: flex;
+        flex-direction: column;
+
+        .title {
+            font-size: 1.3rem;
+        }
+
+        .desc {
+            font-size: 1rem;
+            line-height: 1.2;
+            color: #adb5bd;
+        }
+    }
+}
