@@ -31,7 +31,7 @@ const HomePost = () => {
     const homePostCondition = useMemo(() => {
         if (user) {
             return {
-                fieldName: 'uid',
+                fieldName: 'createdBy',
                 operator: '==',
                 compareValue: `${user.uid}`,
             };

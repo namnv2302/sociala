@@ -38,7 +38,7 @@ const CreatePost = () => {
             if (status.trim() && !postImg) {
                 data = {
                     id: v4(),
-                    uid: user?.uid,
+                    createdBy: user?.uid,
                     author: {
                         uid: user?.uid,
                         avatar: user?.photoURL,
@@ -52,7 +52,7 @@ const CreatePost = () => {
             } else if (status.trim() && postImg) {
                 data = {
                     id: v4(),
-                    uid: user?.uid,
+                    createdBy: user?.uid,
                     author: {
                         uid: user?.uid,
                         avatar: user?.photoURL,
@@ -67,7 +67,7 @@ const CreatePost = () => {
             } else {
                 data = {
                     id: v4(),
-                    uid: user?.uid,
+                    createdBy: user?.uid,
                     author: {
                         uid: user?.uid,
                         avatar: user?.photoURL,

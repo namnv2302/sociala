@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Fredoka+One:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
     --text-primary: #32323d;
@@ -66,10 +66,40 @@ html *::-webkit-scrollbar-track {
 // Override css antd
 :where(.css-dev-only-do-not-override-j0nf2s)[class^='ant-layout'],
 :where(.css-dev-only-do-not-override-j0nf2s)[class*=' ant-layout'] {
-    font-family: var(--font-family);
+    font-family: var(--font-family) !important;
 }
 
 :where(.css-dev-only-do-not-override-j0nf2s)[class^='ant-col'],
 :where(.css-dev-only-do-not-override-j0nf2s)[class*=' ant-col'] {
-    font-family: var(--font-family);
+    font-family: var(--font-family) !important;
+}
+
+:where(.css-dev-only-do-not-override-j0nf2s).ant-tabs {
+    font-family: var(--font-family) !important;
+}
+
+:where(.css-dev-only-do-not-override-j0nf2s).ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: var(--theme-color) !important;
+}
+
+:where(.css-dev-only-do-not-override-j0nf2s).ant-divider-horizontal {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: var(--text-primary) !important;
+}
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: var(--text-primary) !important;
+}
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: var(--text-primary) !important;
+}
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: var(--text-primary) !important;
 }

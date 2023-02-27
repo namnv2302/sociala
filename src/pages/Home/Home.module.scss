@@ -2,7 +2,15 @@
     padding: 20px 0;
 
     .inner {
-        width: 940px;
         margin: 0 auto;
+
+        .body {
+            width: 626px;
+        }
+
+        .right {
+            width: 316px;
+            padding-right: 15px;
+        }
     }
 }

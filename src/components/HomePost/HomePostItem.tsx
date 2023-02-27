@@ -31,7 +31,7 @@ const HomePostItem = ({ post }: { post: IPostItem }) => {
     }, [user?.uid, post.id, post.liked]);
 
     const handleHidePost = useCallback(async () => {
-        await deleteFieldsDoc('post', `${post.id}`, 'uid');
+        await deleteFieldsDoc('post', `${post.id}`, 'createdBy');
         message.info('Hided!');
     }, [post.id]);
 

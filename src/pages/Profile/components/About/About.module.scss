@@ -1,0 +1,31 @@
+.wrapper {
+    margin-top: 16px;
+
+    .info {
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgb(0 0 0 / 5%);
+        background-color: var(--content-bg);
+
+        .head {
+            padding: 24px;
+
+            .heading {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 6px;
+            }
+
+            .description {
+                font-size: 1.2rem;
+                font-weight: 600;
+                line-height: 2.4rem;
+                color: var(--text-second);
+            }
+        }
+
+        .footer {
+            padding: 10px 0;
+            margin: 0 8px;
+        }
+    }
+}

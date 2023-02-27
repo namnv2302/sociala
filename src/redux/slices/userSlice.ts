@@ -10,11 +10,17 @@ export interface UserType {
 type UserState =
     | {
           user: UserType;
+          postCount: number;
+          follower: number;
+          following: number;
       }
-    | { user: null };
+    | { user: null; postCount: 0; follower: 0; following: 0 };
 
 const initialState = {
     user: null,
+    postCount: 0,
+    follower: 0,
+    following: 0,
 } as UserState;
 
 const userSlice = createSlice({
@@ -22,8 +28,9 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => void (state.user = action.payload),
+        increasePost: (state, action) => (state.postCount = action.payload),
     },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, increasePost } = userSlice.actions;
 export default userSlice.reducer;

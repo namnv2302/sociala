@@ -14,7 +14,7 @@ import moment from 'moment';
 
 export const addDocument = async (collectionName: string, payload: any) => {
     try {
-        await setDoc(doc(db, collectionName, payload.id), {
+        await setDoc(doc(db, collectionName, payload.uid || payload.id), {
             ...payload,
             timestamp: serverTimestamp(),
             createdAt: moment().format('DD/MM/YYYY hh:mm'),

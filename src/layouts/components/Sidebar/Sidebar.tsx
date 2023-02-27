@@ -42,7 +42,11 @@ const Sidebar = () => {
                     <SidebarMenuItem icon={<TvIcon width="2rem" height="2rem" />} title="Newsfeed" />
                     <SidebarMenuItem icon={<GlobeIcon width="2rem" height="2rem" />} title="Stories" />
                     <SidebarMenuItem icon={<GroupIcon width="2rem" height="2rem" />} title="Groups" />
-                    <SidebarMenuItem icon={<UserIcon width="2rem" height="2rem" />} title="User Profile" />
+                    <SidebarMenuItem
+                        icon={<UserIcon width="2rem" height="2rem" />}
+                        title="User Profile"
+                        onClick={() => navigate(ROUTE_PATH.PROFILE)}
+                    />
                 </>
             </SidebarMenu>
             <SidebarMenu heading="Media">
@@ -57,7 +61,7 @@ const Sidebar = () => {
                     <SidebarMenuItem
                         icon={<LogoutIcon width="2rem" height="2rem" />}
                         title="Logout"
-                        logout={onLogout}
+                        onClick={onLogout}
                     />
                 </>
             </SidebarMenu>

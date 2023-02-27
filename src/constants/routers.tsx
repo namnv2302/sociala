@@ -4,6 +4,7 @@ import ROUTE_PATH from './routes';
 
 // pages
 import HomePage from '@pages/Home';
+import ProfilePage from '@pages/Profile';
 import SignInPage from '@pages/SignIn';
 import RegisterPage from '@pages/Register';
 import NotFoundPage from '@pages/NotFound';
@@ -26,6 +27,10 @@ export const publicRoutes: publicRoutesType[] = [
     {
         path: ROUTE_PATH.HOME,
         component: HomePage,
+    },
+    {
+        path: ROUTE_PATH.PROFILE,
+        component: ProfilePage,
     },
     {
         path: ROUTE_PATH.SIGN_IN,
