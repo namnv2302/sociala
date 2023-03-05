@@ -5,6 +5,7 @@ import ROUTE_PATH from './routes';
 // pages
 import HomePage from '@pages/Home';
 import ProfilePage from '@pages/Profile';
+import CreateStoriesPage from '@pages/CreateStories';
 import SignInPage from '@pages/SignIn';
 import RegisterPage from '@pages/Register';
 import NotFoundPage from '@pages/NotFound';
@@ -31,6 +32,10 @@ export const publicRoutes: publicRoutesType[] = [
     {
         path: ROUTE_PATH.PROFILE,
         component: ProfilePage,
+    },
+    {
+        path: ROUTE_PATH.STORIES_CREATE,
+        component: CreateStoriesPage,
     },
     {
         path: ROUTE_PATH.SIGN_IN,

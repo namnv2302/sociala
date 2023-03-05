@@ -7,6 +7,7 @@ import { useAppSelector, useAppDispatch } from 'redux/hooks';
 import { MoreIcon } from '@components/Icons';
 import About from '@pages/Profile/components/About/About';
 import { setTabActive } from '@slices/tabSlice';
+import images from '@assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -68,7 +69,7 @@ const ProfileInfo = () => {
                 </div>
                 <div className={cx('center')}>
                     <div className={cx('avatar')}>
-                        <img src={user?.photoURL} alt="" />
+                        <img src={user?.photoURL || images.defaultAvatar} alt="" />
                     </div>
                     <div className={cx('name')}>
                         <h4 className={cx('display-name')}>{user?.displayName}</h4>

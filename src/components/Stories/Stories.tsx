@@ -1,10 +1,14 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
+import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 import { PlusOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
 import classNames from 'classnames/bind';
 import styles from './Stories.module.scss';
-import { stories } from 'data/stories';
 import { LeftIcon, RightIcon } from '@components/Icons';
+import ROUTE_PATH from '@constants/routes';
+import { getAllDocuments } from '@helpers/manageData';
+import images from '@assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -25,6 +29,19 @@ const ArrowNext = ({ currentSlide, slideCount, onClick }: any) => {
 };
 
 const Stories = () => {
+    const navigate = useNavigate();
+    const [storiesData, setStoriesData] = useState<any>();
+
+    useEffect(() => {
+        const getData = async () => {
+            const result = await getAllDocuments('stories');
+            if (result) {
+                setStoriesData(result);
+            }
+        };
+        getData();
+    }, []);
+
     const settings = useMemo(() => {
         return {
             dots: false,
@@ -42,7 +59,7 @@ const Stories = () => {
             <Slider {...settings}>
                 <div className={cx('story-item', 'add-story')}>
                     <div className={cx('body')} style={{ backgroundColor: '#343a40' }}>
-                        <div className={cx('info')}>
+                        <div className={cx('info')} onClick={() => navigate(ROUTE_PATH.STORIES_CREATE)}>
                             <div className={cx('icon')}>
                                 <PlusOutlined className={cx('plus-icon')} />
                             </div>
@@ -50,96 +67,19 @@ const Stories = () => {
                         </div>
                     </div>
                 </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[0].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[0].avatarUser} alt="" />
+                {storiesData &&
+                    storiesData.map((story: any) => (
+                        <div key={v4()} className={cx('story-item')}>
+                            <div className={cx('body')} style={{ backgroundImage: `url(${story.storyImage})` }}>
+                                <div className={cx('info')}>
+                                    <div className={cx('avatar')}>
+                                        <img src={story.createdBy.photoURL || images.defaultAvatar} alt="" />
+                                    </div>
+                                    <h4 className={cx('name')}>{story.createdBy.displayName}</h4>
+                                </div>
                             </div>
-                            <h4 className={cx('name')}>{stories[0].name}</h4>
                         </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[1].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[1].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[1].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[2].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[2].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[2].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[3].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[3].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[3].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[4].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[4].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[4].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[5].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[5].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[5].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[6].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[6].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[6].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[7].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[7].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[7].name}</h4>
-                        </div>
-                    </div>
-                </div>
-                <div className={cx('story-item')}>
-                    <div className={cx('body')} style={{ backgroundImage: `url(${stories[8].imageUrl})` }}>
-                        <div className={cx('info')}>
-                            <div className={cx('avatar')}>
-                                <img src={stories[8].avatarUser} alt="" />
-                            </div>
-                            <h4 className={cx('name')}>{stories[8].name}</h4>
-                        </div>
-                    </div>
-                </div>
+                    ))}
             </Slider>
         </div>
     );

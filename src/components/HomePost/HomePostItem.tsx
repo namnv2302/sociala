@@ -12,6 +12,7 @@ import { useAppSelector } from 'redux/hooks';
 import MoreOption from '@components/MoreOption';
 import MoreOptionItem from '@components/MoreOption/MoreOptionItem';
 import { deleteFieldsDoc } from '@helpers/manageData';
+import images from '@assets/images';
 
 const cx = classNames.bind(styles);
 
@@ -39,7 +40,7 @@ const HomePostItem = ({ post }: { post: IPostItem }) => {
         <div className={cx('item')}>
             <div className={cx('header')}>
                 <div className={cx('avatar')}>
-                    <img src={post.author.avatar} alt="" />
+                    <img src={post.author.avatar || images.defaultAvatar} alt="" />
                 </div>
                 <div className={cx('info')}>
                     <h4 className={cx('author')}>{post.author.name}</h4>

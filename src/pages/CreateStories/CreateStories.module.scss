@@ -1,0 +1,103 @@
+.wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - var(--header-height) - 16px);
+
+    .body {
+        position: relative;
+        width: 220px;
+        height: 330px;
+        border-radius: 6px;
+        background-image: linear-gradient(var(--lg-story-to), var(--lg-story-from));
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.9;
+        }
+
+        .create {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 44px;
+                height: 44px;
+                border-radius: 100%;
+                background-color: var(--content-bg);
+                box-shadow: 0 2px 4px #65676b;
+            }
+
+            .title {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .preview {
+        position: absolute;
+        top: 40px;
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+        padding: 16px 16px 60px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        background-color: var(--content-bg);
+        z-index: 3;
+
+        .preview-img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            padding: 16px;
+            background-color: var(--content-bg-2);
+
+            img {
+                display: block;
+                width: auto;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 8px;
+            }
+        }
+
+        .control {
+            margin-top: 14px;
+
+            .create,
+            .cancel {
+                font-size: 1.4rem;
+                font-weight: 600;
+                margin-right: 8px;
+                border: none;
+            }
+
+            .cancel {
+                background-color: #e4e6eb;
+            }
+
+            .create {
+                min-width: 100px;
+                color: var(--white-color);
+                background-color: var(--theme-color);
+            }
+        }
+    }
+}

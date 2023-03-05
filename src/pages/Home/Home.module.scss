@@ -1,5 +1,5 @@
 .wrapper {
-    padding: 20px 0;
+    padding: 0 0 20px;
 
     .inner {
         margin: 0 auto;
@@ -9,8 +9,23 @@
         }
 
         .right {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
             width: 316px;
             padding-right: 15px;
+            padding-top: calc(var(--header-height) + 20px);
+            overflow: scroll;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            & {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
         }
     }
 }

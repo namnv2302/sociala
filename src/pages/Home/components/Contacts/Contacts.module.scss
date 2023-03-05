@@ -32,12 +32,12 @@
     display: flex;
     align-items: center;
     padding: 8px 20px;
+    cursor: pointer;
 
     .avatar {
         width: 35px;
         height: 35px;
         margin-right: 8px;
-        cursor: pointer;
 
         img {
             display: block;
@@ -52,7 +52,6 @@
         .name {
             font-size: 1.2rem;
             font-weight: 700;
-            cursor: pointer;
         }
     }
 }

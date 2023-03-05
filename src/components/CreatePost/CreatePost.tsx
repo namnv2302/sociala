@@ -80,7 +80,6 @@ const CreatePost = () => {
                     imageUrl: await upload(postImg),
                 };
             }
-            console.log(data);
             setStatus('');
             setPostImg(null);
             await addDocument('post', data);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames/bind';
 import styles from './SidebarMenu.module.scss';
 
@@ -18,4 +19,4 @@ const SidebarMenuItem = ({ icon, title, onClick }: SidebarMenuItemProps) => {
     );
 };
 
-export default SidebarMenuItem;
+export default memo(SidebarMenuItem);

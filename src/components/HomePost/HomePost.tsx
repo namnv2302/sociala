@@ -37,12 +37,12 @@ const HomePost = () => {
             };
         }
     }, [user]);
-    const homePostList = useFirestore('post', homePostCondition);
+    const homePostList = useFirestore('post', 'timestamp', homePostCondition);
 
     return (
         <div className={cx('wrapper')}>
             {homePostList.length > 0 ? (
-                homePostList.map((post: IPostItem) => <HomePostItem key={v4()} post={post} />)
+                homePostList.reverse().map((post: IPostItem) => <HomePostItem key={v4()} post={post} />)
             ) : (
                 <div className={cx('empty-data')}>
                     <h3 className={cx('des')}>Không có bài viết</h3>
