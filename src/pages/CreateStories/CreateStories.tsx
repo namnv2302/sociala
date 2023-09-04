@@ -27,7 +27,6 @@ const CreateStoriesPage: React.FC = () => {
 
     const handleUploadStoriesImage = useCallback((file: any) => {
         file.preview = URL.createObjectURL(file);
-        console.log(file.preview);
         setStoryImage(file);
     }, []);
 

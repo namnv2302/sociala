@@ -12,6 +12,7 @@
     --content-bg: #fff;
     --content-bg-2: #000;
     --hover-overlay: rgba(0, 0, 0, 0.05);
+    --hover-overlay-2: rgba(0, 0, 0, 0.3);
 
     // Theme
     --theme-color: #05f;
@@ -48,6 +49,15 @@ body {
     overflow-y: overlay;
     background-color: var(--layout-bg);
     color: var(--text-primary);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 // Scrollbar CSS

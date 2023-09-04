@@ -1,7 +1,8 @@
-import { useMemo, useEffect, useState } from 'react';
+import { useMemo, useEffect, useState, useCallback } from 'react';
+import { Input } from 'antd';
 import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, CloseOutlined, SendOutlined } from '@ant-design/icons';
 import Slider from 'react-slick';
 import classNames from 'classnames/bind';
 import styles from './Stories.module.scss';
@@ -31,6 +32,7 @@ const ArrowNext = ({ currentSlide, slideCount, onClick }: any) => {
 const Stories = () => {
     const navigate = useNavigate();
     const [storiesData, setStoriesData] = useState<any>();
+    const [previewStories, setPreviewStories] = useState<string>('');
 
     useEffect(() => {
         const getData = async () => {
@@ -54,6 +56,44 @@ const Stories = () => {
         };
     }, []);
 
+    const handleNextStories = useCallback(() => {
+        if (storiesData) {
+            const currentStoriesIndex = storiesData.findIndex((story: any) => story.storyImage === previewStories);
+            let nextStoriesIndex = currentStoriesIndex + 1;
+            if (nextStoriesIndex >= storiesData.length) {
+                nextStoriesIndex = 0;
+            }
+            setPreviewStories(storiesData[nextStoriesIndex].storyImage);
+        }
+    }, [previewStories, storiesData]);
+
+    const handleBackStories = useCallback(() => {
+        if (storiesData) {
+            const currentStoriesIndex = storiesData.findIndex((story: any) => story.storyImage === previewStories);
+            let backStoriesIndex = currentStoriesIndex - 1;
+            if (backStoriesIndex < 0) {
+                backStoriesIndex = storiesData.length - 1;
+            }
+            setPreviewStories(storiesData[backStoriesIndex].storyImage);
+        }
+    }, [previewStories, storiesData]);
+
+    if (storiesData || storiesData === undefined) {
+        return (
+            <div className={cx('empty-story')}>
+                <div className={cx('body')} onClick={() => navigate(ROUTE_PATH.STORIES_CREATE)}>
+                    <div className={cx('icon')}>
+                        <PlusOutlined className={cx('plus-icon')} />
+                    </div>
+                    <div className={cx('text')}>
+                        <h4>Create story</h4>
+                        <p>Share a photo or write something</p>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={cx('wrapper')}>
             <Slider {...settings}>
@@ -63,24 +103,50 @@ const Stories = () => {
                             <div className={cx('icon')}>
                                 <PlusOutlined className={cx('plus-icon')} />
                             </div>
-                            <h4 className={cx('add')}>Add Story</h4>
+                            <h4 className={cx('add')}>Create story</h4>
                         </div>
                     </div>
                 </div>
                 {storiesData &&
                     storiesData.map((story: any) => (
-                        <div key={v4()} className={cx('story-item')}>
+                        <div
+                            key={v4()}
+                            className={cx('story-item')}
+                            onClick={() => setPreviewStories(story.storyImage)}
+                        >
                             <div className={cx('body')} style={{ backgroundImage: `url(${story.storyImage})` }}>
+                                <div className={cx('avatar')}>
+                                    <img src={story.createdBy.photoURL || images.defaultAvatar} alt="" />
+                                </div>
                                 <div className={cx('info')}>
-                                    <div className={cx('avatar')}>
-                                        <img src={story.createdBy.photoURL || images.defaultAvatar} alt="" />
-                                    </div>
                                     <h4 className={cx('name')}>{story.createdBy.displayName}</h4>
                                 </div>
                             </div>
                         </div>
                     ))}
             </Slider>
+            {previewStories && (
+                <div className={cx('overlay')}>
+                    <div className={cx('inner')}>
+                        <img src={previewStories} alt="" />
+                        <div className={cx('comment')}>
+                            <Input className={cx('comment-input')} placeholder="Write Comments" />
+                            <span className={cx('send-icon')}>
+                                <SendOutlined style={{ fontSize: '1.8rem', color: '#fff' }} />
+                            </span>
+                        </div>
+                    </div>
+                    <span className={cx('close', 'btn')} onClick={() => setPreviewStories('')}>
+                        <CloseOutlined style={{ fontSize: '2rem', padding: '10px', cursor: 'pointer' }} />
+                    </span>
+                    <span className={cx('next', 'btn')} onClick={handleNextStories}>
+                        <RightIcon width="2rem" height="2rem" className={cx('right')} />
+                    </span>
+                    <span className={cx('back', 'btn')} onClick={handleBackStories}>
+                        <LeftIcon width="2rem" height="2rem" className={cx('left')} />
+                    </span>
+                </div>
+            )}
         </div>
     );
 };

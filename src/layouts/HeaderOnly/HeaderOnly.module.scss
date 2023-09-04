@@ -1,0 +1,33 @@
+.wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        height: var(--header-height);
+        padding: 0 15px;
+        background-color: var(--header-bg);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.03);
+    }
+
+    .sidebar {
+        position: fixed;
+        left: 0;
+        top: calc(var(--header-height) + 6px);
+        height: 100vh;
+        width: var(--sidebar-width) !important;
+        max-width: var(--sidebar-width) !important;
+        background-color: var(--layout-bg);
+    }
+
+    .content {
+        padding-top: var(--header-height);
+        padding-left: var(--sidebar-width);
+        background-color: var(--layout-bg);
+    }
+}

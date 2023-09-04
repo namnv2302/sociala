@@ -2,10 +2,14 @@ import React, { FC } from 'react';
 import { Navigate } from 'react-router-dom';
 import ROUTE_PATH from './routes';
 
+// layout
+import HeaderOnly from '@layouts/HeaderOnly';
+
 // pages
 import HomePage from '@pages/Home';
 import ProfilePage from '@pages/Profile';
 import CreateStoriesPage from '@pages/CreateStories';
+import SettingPage from '@pages/Setting';
 import SignInPage from '@pages/SignIn';
 import RegisterPage from '@pages/Register';
 import NotFoundPage from '@pages/NotFound';
@@ -13,7 +17,7 @@ import NotFoundPage from '@pages/NotFound';
 type publicRoutesType = {
     path: string;
     component: FC;
-    layout?: null | FC;
+    layout?: null | FC<any>;
 };
 
 export const NavigateToNotFound = () => {
@@ -36,6 +40,11 @@ export const publicRoutes: publicRoutesType[] = [
     {
         path: ROUTE_PATH.STORIES_CREATE,
         component: CreateStoriesPage,
+    },
+    {
+        path: ROUTE_PATH.SETTINGS,
+        component: SettingPage,
+        layout: HeaderOnly,
     },
     {
         path: ROUTE_PATH.SIGN_IN,

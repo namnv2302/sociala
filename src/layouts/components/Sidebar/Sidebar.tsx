@@ -77,7 +77,11 @@ const Sidebar = () => {
             <SidebarMenu heading="General">
                 <>
                     <SidebarMenuItem icon={<Switch size="small" />} title="Dark mode" />
-                    <SidebarMenuItem icon={<SettingIcon width="2rem" height="2rem" />} title="Settings" />
+                    <SidebarMenuItem
+                        icon={<SettingIcon width="2rem" height="2rem" />}
+                        title="Settings"
+                        onClick={() => navigate(ROUTE_PATH.SETTINGS)}
+                    />
                     <SidebarMenuItem
                         icon={<LogoutIcon width="2rem" height="2rem" />}
                         title="Logout"
